@@ -8,6 +8,8 @@ A single row to be displayed in a list of landmarks.
 import SwiftUI
 
 struct LandmarkRow: View {
+    @State var isHover: Bool = false
+    
     var landmark: Landmark
 
     var body: some View {
@@ -33,7 +35,11 @@ struct LandmarkRow: View {
                     .foregroundColor(.yellow)
             }
         }
+        .background(isHover ? Color.red : .clear)
         .padding(.vertical, 4)
+        .onHover { over in
+            isHover.toggle()
+        }
     }
 }
 
